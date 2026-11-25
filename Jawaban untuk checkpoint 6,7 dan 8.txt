@@ -1,0 +1,6 @@
+Jawaban untuk checkpoint 6,7 dan 8
+- berdasarkan log yang muncul, hanya ada 3 callback yang berjalan di MainActivity saat DetailActiviy dibuka, yaitu onPause, onSaveInstanceState dan onStop. kemudian, alasan onDestroy tidak muncul pada log tersebut karena MainActivity tidak dihilangkan, melainkan hanya dihentikan sementara dan disimpan di back stack dibawah DetailActivity. sehingga Ketika pengguna menekan tombol back, maka MainActivity akan dilanjutkan Kembali lewat onRestart, onStart dan onResume, tidak lagi melalui onCreate.
+
+- EditText pulih sendiri setelah dilakukan rotasi karena Android secara otomatis menyimpan dan memulihkan state View yang memiliki id (android:id). sedangkan urutNIM merupakan variable biasa, bukan View, sehingga tidak disimpan secara otomatis dan akan kembali ke nilai awal (false) saat activity dibuat ulang.
+
+- Bundle atau onSaveInstanceState cocok untuk menyimpan data yang bersifat sementara dan hanya berkaitan dengan tampilan serta kondisi layar. Data ini bertahan saat rotasi, tetapi hilang ketika activity ditutup atau aplikasi dihentikan, dan ukurannya harus kecil. Sedangkan database memiliki kapasitas penyimpanan yang jauh lebih besar, sehingga harus dipakai untuk data utama yang diperlukan secara permanen, seperti data mahasiswa, karena data tersebut tetap tersimpan walaupun aplikasi ditutup ataupun perangkat di-restart.
